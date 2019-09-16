@@ -1,0 +1,14 @@
+/.direnv
+/.idea
+/.envrc
+/.myvenv
+/media/cache
+/myvenv
+/static
+/static_files/libs
+/node_modules
+/venv
+/denemee/local_settings.dist.py
+denemee/local_settings.py
+__pycache__
+*.pyc
