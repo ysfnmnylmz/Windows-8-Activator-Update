@@ -7,11 +7,10 @@ from denemee.apps.result.models import Matches
 
 
 class Command(BaseCommand):
-
     def handle(self, *args, **kwargs):
         teams = []
         time = strftime("%m/%d/%Y", gmtime())
-        #time = "9/15/2019"
+        # time = "9/15/2019"
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
         r = requests.get(url)
@@ -82,8 +81,7 @@ class Command(BaseCommand):
                 except:
                     dlist2.append(detail2.text)
             if len(dlist2) > 1:
-                m_match.home_team = dlist2[2]
-                for i in Matches.objects.filter(home_team=m_match.home_team):
+                for i in Matches.objects.filter(home_team=dlist2[2]):
                     i.over_05 = dlist2[19]
                     i.over_15 = dlist2[20]
                     i.over_25 = dlist2[21]

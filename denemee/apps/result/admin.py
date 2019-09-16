@@ -1,5 +1,6 @@
-from django.contrib import admin
 from denemee.apps.result.models import Matches
+
+from django.contrib import admin
 
 
 class MatchesAdmin(admin.ModelAdmin):
@@ -13,6 +14,9 @@ class MatchesAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Matches
+
+
+
 
 
 admin.site.register(Matches, MatchesAdmin)
