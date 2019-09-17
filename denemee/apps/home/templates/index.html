@@ -1,7 +1,25 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block App %}
-
+    <div>
+        <div class="row">
+            {% for match in matches %}
+                <div style="border: 2px solid red; text-align: center">
+                    <p><b>{{ match.home_team }}</b> <span style="border: 2px solid green">({{ match.score }})</span> <b>{{ match.away_team }}</b> [{{ match.fh_score }}]</p>
+                    <p>{{ match.ms_tahmin }} | {{ match.iy_tahmin }}</p>
+                    <p>{{ match.tahmin_kg }} |
+                        {% if match.tahmin05 %}{{ match.tahmin05 }} | {% endif %}
+                        {% if match.tahmin15 %}{{ match.tahmin15 }} | {% endif %}
+                        {% if match.tahmin25 %}{{ match.tahmin25 }} | {% endif %}
+                        {% if match.tahmin35 %}{{ match.tahmin35 }} | {% endif %}
+                        {% if match.tahmin45 %}{{ match.tahmin45 }} | {% endif %}
+                        {% if match.tahmin_iy05 %}{{ match.tahmin_iy05 }} | {% endif %}
+                        {% if match.tahmin_iy15 %}{{ match.tahmin_iy15 }} | {% endif %}
+                        {% if match.tahmin_iy25 %}{{ match.tahmin_iy25 }}{% endif %}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
 {% block scripts %}
 {% endblock %}
