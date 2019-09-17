@@ -16,7 +16,7 @@ class Command(BaseCommand):
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
         r = requests.get(url, headers=headers)
-        soup = bs(r.content, "lxml")
+        soup = bs(r.content, "html.parser")
         league_table = soup.find("table", attrs={"id": "ctl00_MainContentFull_MainContent_MainGrid"})
         matches = league_table.find_all("tr")
         Matches.objects.all().delete()
