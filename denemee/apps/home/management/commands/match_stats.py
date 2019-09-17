@@ -9,6 +9,7 @@ from denemee.apps.result.models import Matches
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         teams = []
+        #test
         time = strftime("%m/%d/%Y", gmtime())
         #time = "9/16/2019"
         headers = {'User-agent': 'Mozilla/5.0'}
