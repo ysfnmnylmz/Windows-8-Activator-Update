@@ -111,4 +111,6 @@ class Command(BaseCommand):
                         i.tahmin_kg = "KG Olur"
                     else:
                         i.tahmin_kg = "KG Yok"
+                    if i.over_25 < 50 and i.kg < 50:
+                        i.tahmin_kg = "KG Yok"
                     i.save()
