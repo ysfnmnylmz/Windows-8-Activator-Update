@@ -9,8 +9,8 @@ from denemee.apps.result.models import Matches
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         teams = []
-        #time = strftime("%m/%d/%Y", gmtime())
-        time = "9/16/2019"
+        time = strftime("%m/%d/%Y", gmtime())
+        #time = "9/16/2019"
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
         r = requests.get(url)
