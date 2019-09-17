@@ -11,9 +11,10 @@ class Command(BaseCommand):
         teams = []
         time = strftime("%m/%d/%Y", gmtime())
         #time = "9/16/2019"
+        headers = {'User-agent': 'Mozilla/5.0'}
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
-        r = requests.get(url)
+        r = requests.get(url, headers=headers)
         soup = bs(r.content, "lxml")
         league_table = soup.find("table", attrs={"id": "ctl00_MainContentFull_MainContent_MainGrid"})
         matches = league_table.find_all("tr")
