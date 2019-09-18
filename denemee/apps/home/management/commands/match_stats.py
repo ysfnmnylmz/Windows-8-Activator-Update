@@ -33,7 +33,8 @@ class Command(BaseCommand):
                 m_match = Matches()
                 m_match.hour = dlist[1]
                 m_match.home_team = dlist[2]
-                m_match.score = dlist[3]
+                m_match.home_score = dlist[3][:1]
+                m_match.away_score = dlist[3][-1:]
                 m_match.away_team = dlist[4]
                 m_match.fh_score = dlist[5]
                 m_match.ms1 = dlist[8]

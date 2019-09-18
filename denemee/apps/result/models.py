@@ -7,7 +7,8 @@ class Matches(models.Model):
     date = models.DateField(blank=True, null=True, verbose_name="Maç Tarihi")
     hour = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Maç Saati")
     home_team = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Ev Sahibi Takım")
-    score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Maç Skoru")
+    home_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Ev Sahibi Skoru")
+    away_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Deplasman Skoru")
     away_team = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Deplasman Takımı")
     fh_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="İlk Yarı skoru")
     ms1 = models.CharField(max_length=255, blank=True, null=True, default='',

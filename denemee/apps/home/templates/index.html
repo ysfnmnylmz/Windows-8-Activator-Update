@@ -5,7 +5,7 @@
         <div class="row">
             {% for match in matches %}
                 <div style="border: 2px solid red; text-align: center">
-                    <p><b>{{ match.home_team }}</b> <span style="border: 2px solid green">({{ match.score }})</span> <b>{{ match.away_team }}</b> [{{ match.fh_score }}]</p>
+                    <p><b>{{ match.home_team }}</b> <span style="border: 2px solid green">({{ match.home_score }} - {{ match.away_score }})</span> <b>{{ match.away_team }}</b> [{{ match.fh_score }}]</p>
                     <p>{{ match.ms_tahmin }} | {{ match.iy_tahmin }}</p>
                     <p>{{ match.tahmin_kg }} |
                         {% if match.tahmin05 %}{{ match.tahmin05 }} | {% endif %}

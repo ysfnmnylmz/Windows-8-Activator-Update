@@ -4,7 +4,8 @@ from django.contrib import admin
 
 
 class MatchesAdmin(admin.ModelAdmin):
-    list_display = ['date', 'score', 'fh_score', 'hour', 'home_team', 'away_team', 'ms_tahmin', 'iy_tahmin', 'tahmin45',
+    list_display = ['date', 'home_score', 'away_score', 'fh_score', 'hour', 'home_team', 'away_team', 'ms_tahmin',
+                    'iy_tahmin', 'tahmin45',
                     'tahmin35', 'tahmin25', 'tahmin15', 'tahmin05', 'tahmin_iy25', 'tahmin_iy15', 'tahmin_iy05',
                     'tahmin_kg']
     list_display_links = ['hour', 'home_team', 'away_team', 'ms_tahmin', 'iy_tahmin']
@@ -14,9 +15,6 @@ class MatchesAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Matches
-
-
-
 
 
 admin.site.register(Matches, MatchesAdmin)
