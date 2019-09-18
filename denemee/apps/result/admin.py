@@ -1,7 +1,7 @@
 from denemee.apps.result.models import Matches
 
 from django.contrib import admin
-
+#ah bi bilsem
 
 class MatchesAdmin(admin.ModelAdmin):
     list_display = ['date','home_score', 'away_score', 'fh_score', 'hour', 'home_team', 'away_team', 'ms_tahmin',
