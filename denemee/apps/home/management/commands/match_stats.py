@@ -11,6 +11,7 @@ class Command(BaseCommand):
         teams = []
         #test
         time = strftime("%m/%d/%Y", gmtime())
+        time2 = strftime("%Y-%m-%d")
         #time = "9/16/2019"
         headers = {'User-agent': 'Mozilla/5.0'}
         main_url = "http://www.betistuta.de"
@@ -41,7 +42,7 @@ class Command(BaseCommand):
                 m_match.iy1 = dlist[14]
                 m_match.iy0 = dlist[15]
                 m_match.iy2 = dlist[16]
-                m_match.date = time
+                m_match.date = time2
                 if m_match.ms1 > m_match.ms0 and m_match.ms1 > m_match.ms2:
                     m_match.ms_tahmin = 'Ev Sahibi Kazanır'
                 elif m_match.ms0 > m_match.ms1 and m_match.ms0 > m_match.ms2:

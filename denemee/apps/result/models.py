@@ -4,7 +4,7 @@ from denemee.apps.home.models import Teams, Players, Squads
 
 
 class Matches(models.Model):
-    date = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Maç Tarihi")
+    date = models.DateField(blank=True, null=True, verbose_name="Maç Tarihi")
     hour = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Maç Saati")
     home_team = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Ev Sahibi Takım")
     score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Maç Skoru")
