@@ -43,7 +43,7 @@ class Matches(models.Model):
     tahmin_iy15 = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="İY 1.5 Üst")
     tahmin_iy25 = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="İY 2.5 Üst")
     tahmin_kg = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="KG Tahmin")
-
+    score = models.CharField(max_length=255, blank=True,null=True, default='',verbose_name="Lan bu ne mk")
     class Meta:
         verbose_name = "Maç"
         verbose_name_plural = "Maçlar"
