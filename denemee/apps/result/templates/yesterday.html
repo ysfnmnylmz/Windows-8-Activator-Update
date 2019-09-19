@@ -47,70 +47,79 @@
                     <div class="card__back">
                         <div class="arka">
                             <p>MS</p>
-                            <span style="display: flex">
+                            <span>
                             {% if match.ms_tahmin == 'Ev Sahibi Kazanır' %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">MS<span>1</span></p>
+                                <p class="bet">MS<span>1</span></p>
                             {% elif match.ms_tahmin == 'Beraberlik' %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">MS<span>0</span></p>
+                                <p class="bet">MS<span>0</span></p>
+                            {% elif match.ms_tahmin == 'Deplasman Kazanır' %}
+                                <p class="bet">MS<span>2</span></p>
+                            {% elif match.ms_tahmin == '1-0 Çifte Şans' %}
+                                <p class="bet">MS<span>1X Ç</span></p>
+                            {% elif match.ms_tahmin == '1-2 Çifte Şans' %}
+                                <p class="bet">MS<span>12 Ç</span></p>
                             {% else %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">MS<span>2</span></p>
+                                <p class="bet">MS<span>02 Ç</span></p>
+
                             {% endif %}
                                 {% if match.tahmin05 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">0.5ü <i
+                                    <p class="bet">0.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin15 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">1.5ü <i
+                                    <p class="bet">1.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin25 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">2.5ü <i
+                                    <p class="bet">2.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin35 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">3.5ü <i
+                                    <p class="bet">3.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin45 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">4.5ü <i
+                                    <p class="bet">4.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.tahmin_kg == 'KG Olur' %}
+                                    <p class="bet">KG <i
+                                            class="fas fa-check"></i></p>
+                                {% else %}
+                                    <p class="bet">KG<i
+                                            class="fas fa-times"></i></p>
                                 {% endif %}
                                 </span>
                         </div>
                         <div class="arka">
                             <p>İY</p>
-                            <span style="display: flex">
+                            <span>
                             {% if match.iy_tahmin == 'Ev Sahibi İlk Yarıyı Kazanır' %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">İY<span>1</span></p>
+                                <p class="bet">İY<span>1</span></p>
                             {% elif match.iy_tahmin == 'İlk Yarı Beraberlik' %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">İY<span>0</span></p>
+                                <p class="bet">İY<span>0</span></p>
+                            {% elif match.iy_tahmin == 'İlk Yarıyı Deplasman Kazanır' %}
+                                <p class="bet">İY<span>2</span></p>
+                            {% elif match.iy_tahmin == 'İY 1-0 Çifte Şans' %}
+                                <p class="bet">İY<span>1X Ç</span></p>
+                            {% elif match.iy_tahmin == 'İY 1-2 Çifte Şans' %}
+                                <p class="bet">İY<span>12 Ç</span></p>
                             {% else %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">İY<span>2</span></p>
+                                <p class="bet">İY<span>02 Ç</span></p>
                             {% endif %}
                                 {% if match.iy_over_05 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">İY 0.5ü <i
+                                    <p class="bet">İY 0.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.iy_over_15 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">İY 1.5ü <i
+                                    <p class="bet">İY 1.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.iy_over_25 %}
-                                    <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">İY 2.5ü <i
+                                    <p class="bet">İY 2.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 </span>
-                        </div>
-                        <div class="arka">
-                            <p>KG</p>
-                            <span style="display: flex">
-                            {% if match.tahmin_kg == 'KG Olur' %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">KG <i
-                                        class="fas fa-thumbs-up"></i></p>
-                            {% else %}
-                                <p style="display: flex; flex-direction: column; align-items: center; margin: 5px 10px;">KG<i
-                                        class="fas fa-thumbs-down"></i></p>
-                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ gulp.task('scripts', function () {
 });
 gulp.task('copy-fonts', function () {
     return gulp
-        .src([homePath + '/libs/font-awesome/fonts/**/*'])
+        .src([homePath + '/libs/font-awesome/webfonts/**/*'])
         .pipe(gulp.dest(homePath + '/fonts/'))
 });
 
