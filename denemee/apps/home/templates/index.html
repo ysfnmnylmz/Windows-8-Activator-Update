@@ -7,7 +7,7 @@
                 <a href="/" style="margin: 5px; color: orange; text-decoration: none">Bugünün Maçları</a>
                 <a href="/yesterday" style="margin: 5px; color: orange; text-decoration: none">Dünün Maçları</a>
             </div>
-            {% for match in matches %}
+            <!--{% for match in matches %}
                 <div id="table" style="border: 2px solid red; text-align: center;">
                     <div class="date-time"><p class="date">{{ match.date }}</p>
                         <p class="time">{{ match.hour }}</p></div>
@@ -25,9 +25,108 @@
                         {% if match.tahmin_iy15 %}{{ match.tahmin_iy15 }} | {% endif %}
                         {% if match.tahmin_iy25 %}{{ match.tahmin_iy25 }}{% endif %}</p>
                 </div>
-            {% endfor %}
+            {% endfor %}-->
         </div>
     </div>
+    <ul>
+        {% for match in matches %}
+            <li class="card">
+                <div class="card__flipper">
+                    <div class="card__front">
+                        <p class="card__name"><span>{{ match.home_team }}</span><br><span
+                                class="versus">vs</span><br><span>{{ match.away_team }}</span></p>
+                        <span style="display: flex; justify-content: center">
+                            <p class="card__num">{{ match.home_score }}</p>
+                            <p class="card__num"> - </p>
+                            <p class="card__num">{{ match.away_score }}</p>
+                        </span>
+                        <span>
+                            <p class="card__num" style="font-size: 30px;">{{ match.competition }}</p>
+                        </span>
+                    </div>
+                    <div class="card__back">
+                        <div class="arka">
+                            <p>MS</p>
+                            <span>
+                            {% if match.ms_tahmin == 'Ev Sahibi Kazanır' %}
+                                <p class="bet">MS<span>1</span></p>
+                            {% elif match.ms_tahmin == 'Beraberlik' %}
+                                <p class="bet">MS<span>0</span></p>
+                            {% elif match.ms_tahmin == 'Deplasman Kazanır' %}
+                                <p class="bet">MS<span>2</span></p>
+                            {% elif match.ms_tahmin == '1-0 Çifte Şans' %}
+                                <p class="bet">MS<span>1X Ç</span></p>
+                            {% elif match.ms_tahmin == '1-2 Çifte Şans' %}
+                                <p class="bet">MS<span>12 Ç</span></p>
+                            {% else %}
+                                <p class="bet">MS<span>02 Ç</span></p>
+
+                            {% endif %}
+                                {% if match.tahmin05 %}
+                                    <p class="bet">0.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.tahmin15 %}
+                                    <p class="bet">1.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.tahmin25 %}
+                                    <p class="bet">2.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.tahmin35 %}
+                                    <p class="bet">3.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.tahmin45 %}
+                                    <p class="bet">4.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.tahmin_kg == 'KG Olur' %}
+                                    <p class="bet">KG <i
+                                            class="fas fa-check"></i></p>
+                                {% else %}
+                                    <p class="bet">KG<i
+                                            class="fas fa-times"></i></p>
+                                {% endif %}
+                                </span>
+                        </div>
+                        <div class="arka">
+                            <p>İY</p>
+                            <span>
+                            {% if match.iy_tahmin == 'Ev Sahibi İlk Yarıyı Kazanır' %}
+                                <p class="bet">İY<span>1</span></p>
+                            {% elif match.iy_tahmin == 'İlk Yarı Beraberlik' %}
+                                <p class="bet">İY<span>0</span></p>
+                            {% elif match.iy_tahmin == 'İlk Yarıyı Deplasman Kazanır' %}
+                                <p class="bet">İY<span>2</span></p>
+                            {% elif match.iy_tahmin == 'İY 1-0 Çifte Şans' %}
+                                <p class="bet">İY<span>1X Ç</span></p>
+                            {% elif match.iy_tahmin == 'İY 1-2 Çifte Şans' %}
+                                <p class="bet">İY<span>12 Ç</span></p>
+                            {% else %}
+                                <p class="bet">İY<span>02 Ç</span></p>
+                            {% endif %}
+                                {% if match.iy_over_05 %}
+                                    <p class="bet">İY 0.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.iy_over_15 %}
+                                    <p class="bet">İY 1.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                {% if match.iy_over_25 %}
+                                    <p class="bet">İY 2.5ü <i
+                                            class="fas fa-thumbs-up"></i></p>
+                                {% endif %}
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
 {% block scripts %}
 {% endblock %}

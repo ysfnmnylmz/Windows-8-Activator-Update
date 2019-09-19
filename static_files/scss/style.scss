@@ -1,5 +1,5 @@
 @import '../libs/wow/css/libs/animate.css';
-@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+@import '../libs/font-awesome/css/all.min.css';
 
 body {
   margin: 0;
@@ -7,79 +7,176 @@ body {
   font-family: 'Poppins', sans-serif !important;
 }
 
-.container {
-  width: 550px;
-  margin: 50px auto;
+$color1: #5271C2;
+$color2: #35a541;
+$color3: #bdb235;
+$color4: #db6623;
+$color5: #3e5eb3;
+$color6: #aa9e5c;
 
+@function longshadow($color_a,$color_b,$stepnum, $opacity: 1) {
+  $gradient_steps: null;
+  @for $i from 1 through $stepnum {
+    $weight: ( ( $i - 1 ) / $stepnum ) * 100;
+    $colour_mix: mix($color_b, rgba($color_a, $opacity), $weight);
+    $seperator: null;
+    @if ($i != $stepnum) {
+      $seperator: #{','};
+    }
+    $gradient_steps: append(#{$gradient_steps}, #{$i}px #{$i}px $colour_mix $seperator);
+  }
+  @return $gradient_steps;
 }
 
-.app {
-  width: 560px;
-  height: 200px;
-  background: #f8f8f8;
-  border-left: 11px solid #034693;
-  border-right: 11px solid #e89e01;
-  border-radius: 20px;
-
+@mixin easeOut {
+  transition: all .6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-div.header {
-  position: relative;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  background: lighten(black, 12);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  max-width: 800px;
   width: 100%;
-  height: 140px;
-}
-
-span.team {
-  position: relative;
-  width: 45%;
-  height: 100%;
-  display: inline-block;
+  margin: 0 auto;
+  padding: 15px;
   text-align: center;
+  overflow-x: hidden;
 }
 
-span.team-left {
+.card {
   float: left;
-}
-
-span.team-right {
-  float: right;
-}
-
-span.team span.name {
-  width: 70%;
-  display: block;
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: rgba(0, 0, 0, 0.8);
-  padding: 5% 15% 0% 15%;
-
-}
-
-span.stats {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: inline-block;
-  left: 0;
-  font-size: 34px;
-  text-align: center;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: black;
-  line-height: 150px;
-}
-
-span.team img.logo {
-  width: 90px;
-  margin-top: 20px;
-}
-
-div.body {
   position: relative;
+  width: calc(100% * .3333 - 30px + .3333 * 30px);
+  height: 340px;
+  background: $color4;
+  margin: 0 20px 30px 0;
+  perspective: 1000;
+
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__flipper {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    @include easeOut;
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+  }
+
+  &__front {
+    transform: rotateY(0);
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  &__back {
+    transform: rotateY(180deg) scale(1.1);
+    background: lighten(black, 8);
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(black, 0.3);
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__name {
+    font-size: 26px;
+    line-height: 0.9;
+    font-weight: 700;
+
+    span {
+      font-size: 26px;
+    }
+
+    .versus {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__num {
+    font-size: 72px;
+    margin: 0 8px 0 0;
+    font-weight: 700;
+
+    @media (max-width: 700px) {
+      font-size: 70px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    width: 100%;
+    height: 290px;
+    margin-right: 0;
+    float: none;
+
+    .card__front,
+    .card__back {
+      height: 290px;
+    }
+  }
 }
 
-div.time {
+/* Demo */
+main {
   text-align: center;
+
+  h1, p {
+    margin: 0 0 12px 0;
+  }
+
+  h1 {
+    margin-top: 12px;
+    font-weight: 300;
+  }
 }
 
+.fa-twitter {
+  color: white;
+  font-size: 30px;
+}
+
+.arka {
+  span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .bet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 5px 10px;
+    }
+  }
+}
