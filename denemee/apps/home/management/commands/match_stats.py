@@ -2,6 +2,7 @@ import requests
 from django.core.management.base import BaseCommand
 from time import gmtime, strftime
 from bs4 import BeautifulSoup as bs
+from django.db.models import Q
 from denemee.apps.home.models import Teams, Players, Squads
 from denemee.apps.result.models import Matches
 
@@ -9,10 +10,11 @@ from denemee.apps.result.models import Matches
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         teams = []
-        #test
+        # test
         time = strftime("%m/%d/%Y", gmtime())
         time2 = strftime("%Y-%m-%d")
-        #time = "9/16/2019"
+        #time2 = "2019-09-18"
+        #time = "9/18/2019"
         headers = {'User-agent': 'Mozilla/5.0'}
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
@@ -20,7 +22,7 @@ class Command(BaseCommand):
         soup = bs(r.content, "lxml")
         league_table = soup.find("table", attrs={"id": "ctl00_MainContentFull_MainContent_MainGrid"})
         matches = league_table.find_all("tr")
-        Matches.objects.all().delete()
+        mm = Matches.objects.filter(Q(date=time2) | Q(home_team__isnull=False) | Q(away_team__isnull=False))
         for match in matches:
             dlist = []
             details = match.findChildren("td", recursive=False)
@@ -119,3 +121,12 @@ class Command(BaseCommand):
                     if i.over_25 < 50 and i.kg < 50:
                         i.tahmin_kg = "KG Yok"
                     i.save()
+        for i in mm:
+            if Matches.objects.filter(date=time2, home_team=i.home_team, away_team=i.away_team, competition=i.competition).count() > 1:
+                print(Matches.objects.filter(date=time2).count())
+                print(Matches.objects.filter(home_team=i.home_team).count())
+                print(Matches.objects.filter(away_team=i.away_team).count())
+                i.delete()
+                print("Fazlalık Silindi!" + i.home_team + i.away_team)
+            else:
+                pass

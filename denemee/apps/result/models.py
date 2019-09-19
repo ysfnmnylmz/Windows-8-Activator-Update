@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils.safestring import mark_safe
 from denemee.apps.home.models import Teams, Players, Squads
 
 
@@ -50,7 +49,7 @@ class Matches(models.Model):
         verbose_name_plural = "Maçlar"
 
     def __str__(self):
-        return "{} ile {} takımları arasındaki ilk yarı ve maç sonu tahmini".format(
+        return "{} vs {} ".format(
             self.home_team,
             self.away_team,
         )
