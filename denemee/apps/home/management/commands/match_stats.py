@@ -37,6 +37,7 @@ class Command(BaseCommand):
                 m_match.away_score = dlist[3][-1:]
                 m_match.away_team = dlist[4]
                 m_match.fh_score = dlist[5]
+                m_match.competition = dlist[6]
                 m_match.ms1 = dlist[8]
                 m_match.ms0 = dlist[9]
                 m_match.ms2 = dlist[10]

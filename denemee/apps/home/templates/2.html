@@ -1,0 +1,103 @@
+<div class="cardContainer">
+    {% for match in matches %}
+        <div class="cardWrapper">
+            <div class="wrap">
+                <div class="card">
+                    <div class="teamA">
+                        <h5>{{ match.home_team }}</h5>
+                    </div>
+                    <div class="vs">
+                        <img src="https://avatanplus.com/files/resources/mid/574963a2b5f7f154f6ad33b9.png" alt="">
+                    </div>
+                    <div class="teamB">
+                        <h5>{{ match.away_team }}</h5>
+                    </div>
+                </div>
+                <div class="card2">
+                    <div class="ms">
+                        <div class="title">Maç Sonucu</div>
+                        <div class="square">
+                            <div>
+                                <p>MS</p>
+                                <span>{{ match.ms_tahmin }}</span>
+                            </div>
+                            <div style="display: flex;">
+                                {% if match.tahmin05 %}
+                                    <div class="goals">
+                                        <p>0.5 Üst</p>
+                                        <span>Evet</span>
+                                    </div>
+                                {% endif %}
+                                {% if match.tahmin15 %}
+                                    <div class="goals">
+                                        <p>1.5 Üst</p>
+                                        <span>Evet</span>
+                                    </div>
+                                {% endif %}
+                                {% if match.tahmin25 %}
+                                    <div class="goals">
+                                        <p>2.5 Üst</p>
+                                        <span>Evet</span>
+                                    </div>
+                                {% endif %}
+                                {% if match.tahmin35 %}
+                                    <div class="goals">
+                                        <p>3.5 Üst</p>
+                                        <span>Evet</span>
+                                    </div>
+                                {% endif %}
+                                {% if match.tahmin45 %}
+                                    <div class="goals">
+                                        <p>0.5 Üst</p>
+                                        <span>Evet</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="iy">
+                        <div class="title">İlkyarı Sonucu</div>
+                        <div class="square">
+                            <div>
+                                <p>İY</p>
+                                <span>0</span>
+                            </div>
+                            <div style="display: flex;">
+                                <div class="goals">
+                                    <p>İY 0.5 Üst</p>
+                                    <span>Evet</span>
+                                </div>
+                                <div class="goals">
+                                    <p>İY 0.5 Üst</p>
+                                    <span>Evet</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="campo flex">
+                <p>İspanya</p>
+            </div>
+            <div class="played">
+                <div class="f1"></div>
+                <div class="f1"></div>
+            </div>
+            <div class="score">
+                <div class="f1"></div>
+                <div class="row text-center score-board">
+                    <!--<img src="https://1.bp.blogspot.com/-9Dgiw4uI9qk/WcO7Irqb7CI/AAAAAAAABBI/xp_3tWbwH2AHJJYFFXpthFhrsd8rgfyqgCEwYBhgL/s1600/fc-barcelona.png"
+                         alt="" height="50">-->
+                    <p class="score">0</p>
+                    <div class="colon">:</div>
+                    <p class="score">0</p>
+                    <!--<img src="https://1.bp.blogspot.com/-9Dgiw4uI9qk/WcO7Irqb7CI/AAAAAAAABBI/xp_3tWbwH2AHJJYFFXpthFhrsd8rgfyqgCEwYBhgL/s1600/fc-barcelona.png"
+                         alt="" height="50">-->
+                </div>
+                <div class="f1"></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
