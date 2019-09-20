@@ -16,13 +16,16 @@
                     <div class="card__front">
                         <p class="card__name"><span>{{ match.home_team }}</span><br><span
                                 class="versus">vs</span><br><span>{{ match.away_team }}</span></p>
-                        <span style="display: flex; justify-content: center">
+                        <span style="display: flex; justify-content: center; line-height: 0.8">
                             <p class="card__num h-score">{{ match.home_score }}</p>
                             <p class="card__num"> - </p>
                             <p class="card__num a-score">{{ match.away_score }}</p>
                         </span>
                         <span>
                             <p class="card__num" style="font-size: 30px;">{{ match.competition }}</p>
+                        </span>
+                        <span style="position:absolute;bottom: 10px;left: 0;right: 0; ">
+                            <a href="" class="card__num" style="padding:5px;border: 1px solid white;font-size: 15px; color: white; text-decoration: none; font-weight: 400">Tahminler İçin Tıklayınız...</a>
                         </span>
                     </div>
                     <div class="card__back">
