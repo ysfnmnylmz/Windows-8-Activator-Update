@@ -5,9 +5,8 @@ from datetime import datetime, timedelta
 
 
 def yesterday(request):
-    time = strftime("%Y-%m-%d")
-    matches = Matches.objects.filter(date=datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d'))
+    y_matches = Matches.objects.filter(date=datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d'))
     payload = {
-        'matches': matches
+        'y_matches': y_matches
     }
     return render(request, 'yesterday.html', payload)

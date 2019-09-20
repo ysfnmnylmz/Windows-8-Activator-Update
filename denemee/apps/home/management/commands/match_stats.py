@@ -13,8 +13,8 @@ class Command(BaseCommand):
         # test
         time = strftime("%m/%d/%Y", gmtime())
         time2 = strftime("%Y-%m-%d")
-        #time2 = "2019-09-18"
-        #time = "9/18/2019"
+        #time2 = "2019-09-19"
+        #time = "9/19/2019"
         headers = {'User-agent': 'Mozilla/5.0'}
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time

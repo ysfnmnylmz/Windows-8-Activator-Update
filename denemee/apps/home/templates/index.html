@@ -36,9 +36,9 @@
                         <p class="card__name"><span>{{ match.home_team }}</span><br><span
                                 class="versus">vs</span><br><span>{{ match.away_team }}</span></p>
                         <span style="display: flex; justify-content: center">
-                            <p class="card__num">{{ match.home_score }}</p>
+                            <p class="card__num h-score">{{ match.home_score }}</p>
                             <p class="card__num"> - </p>
-                            <p class="card__num">{{ match.away_score }}</p>
+                            <p class="card__num a-score">{{ match.away_score }}</p>
                         </span>
                         <span>
                             <p class="card__num" style="font-size: 30px;">{{ match.competition }}</p>
@@ -49,37 +49,49 @@
                             <p>MS</p>
                             <span>
                             {% if match.ms_tahmin == 'Ev Sahibi Kazanır' %}
-                                <p class="bet">MS<span>1</span></p>
+                                <p class="bet" {% if match.home_score > match.away_score %}style="color:green;"
+                                   {% else %}style="color:red;"{% endif %}>MS<span>1</span></p>
                             {% elif match.ms_tahmin == 'Beraberlik' %}
-                                <p class="bet">MS<span>0</span></p>
+                                <p class="bet" {% if match.home_score == match.away_score %}style="color:green;"
+                                   {% else %}style="color:red;"{% endif %}>MS<span>0</span></p>
                             {% elif match.ms_tahmin == 'Deplasman Kazanır' %}
-                                <p class="bet">MS<span>2</span></p>
+                                <p class="bet" {% if match.home_score < match.away_score %}style="color:green;"
+                                   {% else %}style="color:red;"{% endif %}>MS<span>2</span></p>
                             {% elif match.ms_tahmin == '1-0 Çifte Şans' %}
-                                <p class="bet">MS<span>1X Ç</span></p>
+                                <p class="bet" {% if match.home_score >= match.away_score %}style="color:green;"
+                                   {% else %}style="color:red;"{% endif %}>MS<span>1X Ç</span></p>
                             {% elif match.ms_tahmin == '1-2 Çifte Şans' %}
-                                <p class="bet">MS<span>12 Ç</span></p>
+                                <p class="bet" {% if match.home_score != match.away_score %}style="color:green;"
+                                   {% else %}style="color:red;"{% endif %}>MS<span>12 Ç</span></p>
                             {% else %}
-                                <p class="bet">MS<span>02 Ç</span></p>
+                                <p class="bet" {% if match.home_score <= match.away_score %}style="color:green;"
+                                   {% else %}style="color:red;"{% endif %}>MS<span>02 Ç</span></p>
 
                             {% endif %}
                                 {% if match.tahmin05 %}
-                                    <p class="bet">0.5ü <i
+                                    <p class="bet"
+                                       {% if match.home_score|add:match.away_score > 0 %}style="color:green;"
+                                       {% else %}style="color: red;"{% endif %}>0.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin15 %}
-                                    <p class="bet">1.5ü <i
+                                    <p class="bet" {% if match.home_score|add:match.away_score > 1 %}style="color:green;"
+                                       {% else %}style="color: red;"{% endif %}>1.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin25 %}
-                                    <p class="bet">2.5ü <i
+                                    <p class="bet" {% if match.home_score|add:match.away_score > 2 %}style="color:green;"
+                                       {% else %}style="color: red;"{% endif %}>2.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin35 %}
-                                    <p class="bet">3.5ü <i
+                                    <p class="bet" {% if match.home_score|add:match.away_score > 3 %}style="color:green;"
+                                       {% else %}style="color: red;"{% endif %}>3.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin45 %}
-                                    <p class="bet">4.5ü <i
+                                    <p class="bet" {% if match.home_score|add:match.away_score > 4 %}style="color:green;"
+                                       {% else %}style="color: red;"{% endif %}>4.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin_kg == 'KG Olur' %}

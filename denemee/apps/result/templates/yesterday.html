@@ -7,29 +7,10 @@
                 <a href="/" style="margin: 5px; color: orange; text-decoration: none">Bugünün Maçları</a>
                 <a href="/yesterday" style="margin: 5px; color: orange; text-decoration: none">Dünün Maçları</a>
             </div>
-            <!--{% for match in matches %}
-                <div id="table" style="border: 2px solid red; text-align: center;">
-                    <div class="date-time"><p class="date">{{ match.date }}</p>
-                        <p class="time">{{ match.hour }}</p></div>
-                    <p><b>{{ match.home_team }}</b> <span
-                            style="border: 2px solid green">({{ match.home_score }} - {{ match.away_score }})</span>
-                        <b>{{ match.away_team }}</b> [{{ match.fh_score }}]</p>
-                    <p>{{ match.ms_tahmin }} | {{ match.iy_tahmin }}</p>
-                    <p>{{ match.tahmin_kg }} |
-                        {% if match.tahmin05 %}{{ match.tahmin05 }} | {% endif %}
-                        {% if match.tahmin15 %}{{ match.tahmin15 }} | {% endif %}
-                        {% if match.tahmin25 %}{{ match.tahmin25 }} | {% endif %}
-                        {% if match.tahmin35 %}{{ match.tahmin35 }} | {% endif %}
-                        {% if match.tahmin45 %}{{ match.tahmin45 }} | {% endif %}
-                        {% if match.tahmin_iy05 %}{{ match.tahmin_iy05 }} | {% endif %}
-                        {% if match.tahmin_iy15 %}{{ match.tahmin_iy15 }} | {% endif %}
-                        {% if match.tahmin_iy25 %}{{ match.tahmin_iy25 }}{% endif %}</p>
-                </div>
-            {% endfor %}-->
         </div>
     </div>
     <ul>
-        {% for match in matches %}
+        {% for match in y_matches %}
             <li class="card">
                 <div class="card__flipper">
                     <div class="card__front">
