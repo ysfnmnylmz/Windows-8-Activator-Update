@@ -38,7 +38,8 @@ class Command(BaseCommand):
                 m_match.home_score = dlist[3][:1]
                 m_match.away_score = dlist[3][-1:]
                 m_match.away_team = dlist[4]
-                m_match.fh_score = dlist[5]
+                m_match.h_fh_score = dlist[5][:1]
+                m_match.a_fh_score = dlist[5][-1:]
                 m_match.competition = dlist[6]
                 m_match.ms1 = dlist[8]
                 m_match.ms0 = dlist[9]
@@ -100,19 +101,19 @@ class Command(BaseCommand):
                     i.kg = dlist2[25]
                     if i.over_05 >= 30 or i.iy_over_05 >= 68 or i.over_45 >= 15 or i.over_35 >= 35 or i.over_25 >= 50 or i.over_15 >= 55:
                         i.tahmin05 = '0.5 Üst'
-                    if i.over_15 >= 55 or i.iy_over_15 >= 33 or i.over_45 >= 15 or i.over_35 >= 35 or i.over_25 >= 50:
+                    if i.over_15 >= 55 or i.iy_over_15 >= 33 or i.over_45 >= 14 or i.over_35 >= 35 or i.over_25 >= 50:
                         i.tahmin15 = '1.5 Üst'
-                    if i.over_25 >= 50 or i.iy_over_25 >= 15 or i.over_45 >= 15 or i.over_35 >= 35:
+                    if i.over_25 >= 50 or i.iy_over_25 >= 15 or i.over_45 >= 12 or i.over_35 >= 32:
                         i.tahmin25 = '2.5 Üst'
-                    if i.over_35 >= 35 or i.over_45 >= 15:
+                    if i.over_35 >= 30 or i.over_45 >= 10:
                         i.tahmin35 = '3.5 Üst Denenebilir'
-                    if i.over_45 >= 15:
+                    if i.over_45 >= 10:
                         i.tahmin45 = '4.5 Üst Denenebilir'
-                    if i.iy_over_05 >= 68 or i.iy_over_25 >= 15 or i.iy_over_15 >= 33:
+                    if i.iy_over_05 >= 68 or i.iy_over_25 >= 13 or i.iy_over_15 >= 33:
                         i.tahmin_iy05 = 'İY 0.5 Üst'
-                    if i.iy_over_15 >= 33 or i.iy_over_25 >= 15:
+                    if i.iy_over_15 >= 30 or i.iy_over_25 >= 10:
                         i.tahmin_iy15 = 'İY 1.5 Üst'
-                    if i.iy_over_25 >= 15:
+                    if i.iy_over_25 >= 10:
                         i.tahmin_iy25 = 'İY 2.5 Üst Denenebilir'
                     if i.kg >= 40 and i.over_25 >= 45 and -10 < i.kg - i.over_25 < 10 or i.kg >= 52 or i.tahmin25 and i.kg >= 35:
                         i.tahmin_kg = "KG Olur"

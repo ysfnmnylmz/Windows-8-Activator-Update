@@ -9,7 +9,8 @@ class Matches(models.Model):
     home_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Ev Sahibi Skoru")
     away_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Deplasman Skoru")
     away_team = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Deplasman Takımı")
-    fh_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="İlk Yarı skoru")
+    h_fh_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Ev Sahibi İlk Yarı skoru")
+    a_fh_score = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Deplasman İlk Yarı skoru")
     competition = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name="Turnuva")
     ms1 = models.CharField(max_length=255, blank=True, null=True, default='',
                            verbose_name="Maç Sonucu 1 Tahmin Yüzdesi")
