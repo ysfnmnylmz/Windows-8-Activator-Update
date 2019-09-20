@@ -121,6 +121,10 @@ class Command(BaseCommand):
                         i.tahmin_kg = "KG Yok"
                     if i.over_25 < 50 and i.kg < 50:
                         i.tahmin_kg = "KG Yok"
+                    if i.home_score == '0' or i.away_score == '0':
+                        i.score = 'KG Yok'
+                    elif i.home_score != '0' and i.away_score != '0':
+                        i.score = 'KG Var'
                     i.save()
         for i in mm:
             if Matches.objects.filter(date=time2, home_team=i.home_team, away_team=i.away_team, competition=i.competition).count() > 1:

@@ -76,11 +76,11 @@
                                             class="far fa-thumbs-up"></i></p>
                                 {% endif %}
                                 {% if match.tahmin_kg == 'KG Olur' %}
-                                    <p class="bet" {% if match.home_score != 'v' %}{% if match.home_score > 0 and match.away_score > 0 %}style="color:green;"
+                                    <p class="bet" {% if match.home_score != 'v' %}{% if match.home_score != '0' and match.away_score != '0' %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>KG <i
                                             class="fas fa-check"></i></p>
                                 {% else %}
-                                    <p class="bet" {% if match.home_score != 'v' %}{% if match.home_score == 0 or match.away_score == 0 %}style="color:green;"
+                                    <p class="bet" {% if match.home_score != 'v' %}{% if match.home_score == '0' or match.away_score == '0' %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>KG<i
                                             class="fas fa-times"></i></p>
                                 {% endif %}
