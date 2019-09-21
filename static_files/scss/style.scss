@@ -235,3 +235,21 @@ main {
 .card110 {
   background: linear-gradient(to right, rgba(255, 0, 0, -1), rgba(0, 255, 0, 1));
 }
+.button{
+  padding: 20px;
+  a{
+    color: white;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: $color4;
+    text-decoration: none;
+
+    &:hover{
+      transition: background-color 0.2s linear;
+      background-color: #052f57;
+      color: greenyellow;
+
+    }
+  }
+}
