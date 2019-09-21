@@ -13,8 +13,8 @@ class Command(BaseCommand):
         # test
         time = strftime("%m/%d/%Y", gmtime())
         time2 = strftime("%Y-%m-%d")
-        #time2 = "2019-09-19"
-        #time = "9/19/2019"
+        # time2 = "2019-09-19"
+        # time = "9/19/2019"
         headers = {'User-agent': 'Mozilla/5.0'}
         main_url = "http://www.betistuta.de"
         url = main_url + "/Futbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
@@ -109,11 +109,11 @@ class Command(BaseCommand):
                         i.tahmin35 = '3.5 Üst Denenebilir'
                     if i.over_45 >= 10:
                         i.tahmin45 = '4.5 Üst Denenebilir'
-                    if i.iy_over_05 >= 68 or i.iy_over_25 >= 13 or i.iy_over_15 >= 33:
+                    if i.iy_over_05 >= 68 or i.iy_over_25 >= 12 or i.iy_over_15 >= 30:
                         i.tahmin_iy05 = 'İY 0.5 Üst'
-                    if i.iy_over_15 >= 30 or i.iy_over_25 >= 10:
+                    if i.iy_over_15 >= 30 or i.iy_over_25 >= 12:
                         i.tahmin_iy15 = 'İY 1.5 Üst'
-                    if i.iy_over_25 >= 10:
+                    if i.iy_over_25 >= 12 or i.over_25 > 50:
                         i.tahmin_iy25 = 'İY 2.5 Üst Denenebilir'
                     if i.kg >= 40 and i.over_25 >= 45 and -10 < i.kg - i.over_25 < 10 or i.kg >= 52 or i.tahmin25 and i.kg >= 35:
                         i.tahmin_kg = "KG Olur"
@@ -127,7 +127,8 @@ class Command(BaseCommand):
                         i.score = 'KG Var'
                     i.save()
         for i in mm:
-            if Matches.objects.filter(date=time2, home_team=i.home_team, away_team=i.away_team, competition=i.competition).count() > 1:
+            if Matches.objects.filter(date=time2, home_team=i.home_team, away_team=i.away_team,
+                                      competition=i.competition).count() > 1:
                 print(Matches.objects.filter(date=time2).count())
                 print(Matches.objects.filter(home_team=i.home_team).count())
                 print(Matches.objects.filter(away_team=i.away_team).count())
