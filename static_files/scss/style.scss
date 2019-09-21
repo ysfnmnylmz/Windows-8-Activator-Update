@@ -235,9 +235,11 @@ main {
 .card110 {
   background: linear-gradient(to right, rgba(255, 0, 0, -1), rgba(0, 255, 0, 1));
 }
-.button{
+
+.button {
   padding: 20px;
-  a{
+
+  a {
     color: white;
     border: 1px solid whitesmoke;
     border-radius: 5px;
@@ -245,11 +247,60 @@ main {
     background-color: $color4;
     text-decoration: none;
 
-    &:hover{
+    &:hover {
       transition: background-color 0.2s linear;
       background-color: #052f57;
       color: greenyellow;
 
     }
+  }
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  position: relative;
+
+  input {
+    outline: none;
+    border: 1px solid #747474;
+    font-family: 'Poppins', sans-serif;
+
+    &[type=search] {
+      padding: 10px;
+      -webkit-appearance: textfield;
+      -webkit-box-sizing: content-box;
+      margin: 10px;
+      color: black;
+      height: 30px;
+      width: 100%;
+      -webkit-border-radius: 10em;
+      -moz-border-radius: 10em;
+      border-radius: 0;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      transition: all .5s;
+
+      &::-webkit-search-decoration,
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-results-button,
+      &::-webkit-search-results-decoration{
+        -webkit-appearance: none;
+      }
+    }
+  }
+}
+
+.search-border {
+  border: none;
+  background: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+
+  img {
+    width: 32px;
   }
 }

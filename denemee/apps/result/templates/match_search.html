@@ -18,19 +18,19 @@
         </div>
     </form>
     <ul>
-        {% for match in matches %}
+        {% for object in object_list %}
             <li class="card" style="display: none">
                 <div class="card__flipper">
                     <div class="card__front">
-                        <p class="card__name"><span>{{ match.home_team }}</span><br><span
-                                class="versus">vs</span><br><span>{{ match.away_team }}</span></p>
+                        <p class="card__name"><span>{{ object.home_team }}</span><br><span
+                                class="versus">vs</span><br><span>{{ object.away_team }}</span></p>
                         <span style="display: flex; justify-content: center; line-height: 0.8">
-                            <p class="card__num h-score">{{ match.home_score }}</p>
+                            <p class="card__num h-score">{{ object.home_score }}</p>
                             <p class="card__num"> - </p>
-                            <p class="card__num a-score">{{ match.away_score }}</p>
+                            <p class="card__num a-score">{{ object.away_score }}</p>
                         </span>
                         <span>
-                            <p class="card__num" style="font-size: 30px;">{{ match.competition }}</p>
+                            <p class="card__num" style="font-size: 30px;">{{ object.competition }}</p>
                         </span>
                         <span style="position:absolute;bottom: 10px;left: 0;right: 0; ">
                             <a href="" class="card__num"
@@ -41,70 +41,70 @@
                         <div class="arka">
                             <p>MS</p>
                             <span>
-                            {% if match.ms_tahmin == 'Ev Sahibi Kazanır' %}
+                            {% if object.ms_tahmin == 'Ev Sahibi Kazanır' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score > match.away_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.home_score > object.away_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>1</span></p>
-                            {% elif match.ms_tahmin == 'Beraberlik' %}
+                            {% elif object.ms_tahmin == 'Beraberlik' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score == match.away_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.home_score == object.away_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>0</span></p>
-                            {% elif match.ms_tahmin == 'Deplasman Kazanır' %}
+                            {% elif object.ms_tahmin == 'Deplasman Kazanır' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score < match.away_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.home_score < object.away_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>2</span></p>
-                            {% elif match.ms_tahmin == '1-0 Çifte Şans' %}
+                            {% elif object.ms_tahmin == '1-0 Çifte Şans' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score >= match.away_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.home_score >= object.away_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>1X Ç</span></p>
-                            {% elif match.ms_tahmin == '1-2 Çifte Şans' %}
+                            {% elif object.ms_tahmin == '1-2 Çifte Şans' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score != match.away_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.home_score != object.away_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>12 Ç</span></p>
                             {% else %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score <= match.away_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.home_score <= object.away_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>02 Ç</span></p>
 
                             {% endif %}
-                                {% if match.tahmin05 %}
+                                {% if object.tahmin05 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 0 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score|add:object.away_score > 0 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>0.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.tahmin15 %}
+                                {% if object.tahmin15 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 1 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score|add:object.away_score > 1 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>1.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.tahmin25 %}
+                                {% if object.tahmin25 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 2 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score|add:object.away_score > 2 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>2.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.tahmin35 %}
+                                {% if object.tahmin35 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 3 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score|add:object.away_score > 3 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>3.5ü <i
                                             class="far fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.tahmin45 %}
+                                {% if object.tahmin45 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 4 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score|add:object.away_score > 4 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>4.5ü <i
                                             class="far fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.tahmin_kg == 'KG Olur' %}
+                                {% if object.tahmin_kg == 'KG Olur' %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score != '0' and match.away_score != '0' %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score != '0' and object.away_score != '0' %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>KG <i
                                             class="fas fa-check"></i></p>
                                 {% else %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score == '0' or match.away_score == '0' %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.home_score == '0' or object.away_score == '0' %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>KG<i
                                             class="fas fa-times"></i></p>
                                 {% endif %}
@@ -113,46 +113,46 @@
                         <div class="arka">
                             <p>İY</p>
                             <span>
-                            {% if match.iy_tahmin == 'Ev Sahibi İlk Yarıyı Kazanır' %}
+                            {% if object.iy_tahmin == 'Ev Sahibi İlk Yarıyı Kazanır' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score > match.a_fh_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.h_fh_score > object.a_fh_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>1</span></p>
-                            {% elif match.iy_tahmin == 'İlk Yarı Beraberlik' %}
+                            {% elif object.iy_tahmin == 'İlk Yarı Beraberlik' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score == match.a_fh_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.h_fh_score == object.a_fh_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>0</span></p>
-                            {% elif match.iy_tahmin == 'İlk Yarıyı Deplasman Kazanır' %}
+                            {% elif object.iy_tahmin == 'İlk Yarıyı Deplasman Kazanır' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score < match.a_fh_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.h_fh_score < object.a_fh_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>2</span></p>
-                            {% elif match.iy_tahmin == 'İY 1-0 Çifte Şans' %}
+                            {% elif object.iy_tahmin == 'İY 1-0 Çifte Şans' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score >= match.a_fh_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.h_fh_score >= object.a_fh_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>1X Ç</span></p>
-                            {% elif match.iy_tahmin == 'İY 1-2 Çifte Şans' %}
+                            {% elif object.iy_tahmin == 'İY 1-2 Çifte Şans' %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score != match.a_fh_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.h_fh_score != object.a_fh_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>12 Ç</span></p>
                             {% else %}
                                 <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score <= match.a_fh_score %}style="color:green;"
+                                   {% if object.home_score != 'v' %}{% if object.h_fh_score <= object.a_fh_score %}style="color:green;"
                                    {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>02 Ç</span></p>
                             {% endif %}
-                                {% if match.iy_over_05 %}
+                                {% if object.iy_over_05 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 0 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.h_fh_score|add:object.a_fh_score > 0 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>İY 0.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.iy_over_15 %}
+                                {% if object.iy_over_15 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 1 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.h_fh_score|add:object.a_fh_score > 1 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>İY 1.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.iy_over_25 %}
+                                {% if object.iy_over_25 %}
                                     <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 2 %}style="color:green;"
+                                       {% if object.home_score != 'v' %}{% if object.h_fh_score|add:object.a_fh_score > 2 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>İY 2.5ü <i
                                             class="far fa-thumbs-up"></i></p>
                                 {% endif %}
