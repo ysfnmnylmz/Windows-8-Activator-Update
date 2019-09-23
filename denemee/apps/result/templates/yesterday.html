@@ -9,11 +9,20 @@
             </div>
         </div>
     </div>
+    <form action="{% url 'result:search_result' %}" method="get">
+        <div class="col-12 search">
+            <input name="q" class="search-news-none" alt="Arama Yap.." type="search"
+                   placeholder="Takım İsmi Gir...">
+            <button class="search-border"><img src="{% static 'img/icons/search-icon.svg' %}">
+            </button>
+        </div>
+    </form>
     <ul>
         {% for match in y_matches %}
             <li class="card" style="display: none">
                 <div class="card__flipper">
                     <div class="card__front">
+                        <p>{{ match.date }}</p>
                         <p class="card__name"><span>{{ match.home_team }}</span><br><span
                                 class="versus">vs</span><br><span>{{ match.away_team }}</span></p>
                         <span style="display: flex; justify-content: center; line-height: 0.8">

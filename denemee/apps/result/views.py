@@ -22,6 +22,7 @@ class SearchMatch(ListView):
         query = self.request.GET.get('q')
         for term in query.split():
             object_list = Matches.objects.filter(
-                Q(home_team__icontains=term) | Q(away_score__contains=term)
-            )
+                Q(home_team__icontains=term) |
+                Q(away_team__icontains=term)
+            ).order_by('-date')
             return object_list
