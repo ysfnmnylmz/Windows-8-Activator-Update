@@ -31,7 +31,7 @@
                             <p class="card__num a-score">{{ match.away_score }}</p>
                         </span>
                         <span>
-                            <p class="card__num" style="font-size: 30px;">{{ match.competition }}</p>
+                            <p class="card__num" style="font-size: 15px;">{{ match.competition }}</p>
                         </span>
                         <span style="position:absolute;bottom: 10px;left: 0;right: 0; ">
                             <a href="" class="card__num"
@@ -92,12 +92,12 @@
                                        {% else %}style="color: red;"{% endif %}{% endif %}>3.5ü <i
                                             class="far fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.tahmin45 %}
+                                <!--{% if match.tahmin45 %}
                                     <p class="bet"
                                        {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 4 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>4.5ü <i
                                             class="far fa-thumbs-up"></i></p>
-                                {% endif %}
+                                {% endif %}-->
                                 {% if match.tahmin_kg == 'KG Olur' %}
                                     <p class="bet"
                                        {% if match.home_score != 'v' %}{% if match.home_score != '0' and match.away_score != '0' %}style="color:green;"
@@ -151,12 +151,12 @@
                                        {% else %}style="color: red;"{% endif %}{% endif %}>İY 1.5ü <i
                                             class="fas fa-thumbs-up"></i></p>
                                 {% endif %}
-                                {% if match.iy_over_25 %}
+                                <!--{% if match.iy_over_25 %}
                                     <p class="bet"
                                        {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 2 %}style="color:green;"
                                        {% else %}style="color: red;"{% endif %}{% endif %}>İY 2.5ü <i
                                             class="far fa-thumbs-up"></i></p>
-                                {% endif %}
+                                {% endif %}-->
                                 </span>
                         </div>
                     </div>

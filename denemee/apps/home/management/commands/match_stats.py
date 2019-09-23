@@ -113,11 +113,11 @@ class Command(BaseCommand):
                         i.tahmin35 = '3.5 Üst Denenebilir'
                     if i.over_45 >= 10:
                         i.tahmin45 = '4.5 Üst Denenebilir'
-                    if i.iy_over_05 >= 68 or i.iy_over_25 >= 12 or i.iy_over_15 >= 30:
+                    if (i.iy_over_05 >= 68 or i.iy_over_25 >= 12 or i.iy_over_15 >= 30) and i.over_05 >= 30:
                         i.tahmin_iy05 = 'İY 0.5 Üst'
-                    if i.iy_over_15 >= 30 or i.iy_over_25 >= 12:
+                    if (i.iy_over_15 >= 30 or i.iy_over_25 >= 12) and i.over_15 >= 55:
                         i.tahmin_iy15 = 'İY 1.5 Üst'
-                    if i.iy_over_25 >= 12 or i.over_25 > 50:
+                    if (i.iy_over_25 >= 12 or i.over_25 > 50) and i.over_25 >=50:
                         i.tahmin_iy25 = 'İY 2.5 Üst Denenebilir'
                     if i.kg >= 40 and i.over_25 >= 45 and -10 < i.kg - i.over_25 < 10 or i.kg >= 52 or i.tahmin25 and i.kg >= 35:
                         i.tahmin_kg = "KG Olur"
