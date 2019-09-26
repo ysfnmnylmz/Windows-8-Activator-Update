@@ -8,7 +8,6 @@ from datetime import datetime, timedelta
 
 
 def home(request):
-    """
     teams = []
     # test
     dk = datetime.now().minute
@@ -35,48 +34,48 @@ def home(request):
             except:
                 dlist.append(detail.text)
         if len(dlist) > 1:
-            for p in Matches.objects.filter(home_team=dlist[2], away_team=dlist[4]):
-                p.hour = dlist[1]
-                p.home_team = dlist[2]
-                p.home_score = dlist[3][:1]
-                p.away_score = dlist[3][-1:]
-                p.away_team = dlist[4]
-                p.h_fh_score = dlist[5][:1]
-                p.a_fh_score = dlist[5][-1:]
-                p.competition = dlist[6]
-                p.ms1 = dlist[8]
-                p.ms0 = dlist[9]
-                p.ms2 = dlist[10]
-                p.iy1 = dlist[14]
-                p.iy0 = dlist[15]
-                p.iy2 = dlist[16]
-                p.date = time2
-                if p.ms1 > p.ms0 and p.ms1 > p.ms2:
-                    p.ms_tahmin = 'Ev Sahibi Kazanır'
-                elif p.ms0 > p.ms1 and p.ms0 > p.ms2:
-                    p.ms_tahmin = 'Beraberlik'
-                elif p.ms2 > p.ms1 and p.ms2 > p.ms0:
-                    p.ms_tahmin = 'Deplasman Kazanır'
-                elif p.ms1 == p.ms0:
-                    p.ms_tahmin = "1-0 Çifte Şans"
-                elif p.ms1 == p.ms2:
-                    p.ms_tahmin = "1-2 Çifte Şans"
-                elif p.ms2 == p.ms0:
-                    p.ms_tahmin = "0-2 Çifte Şans"
+            m_match = Matches()
+            m_match.hour = dlist[1]
+            m_match.home_team = dlist[2]
+            m_match.home_score = dlist[3][:1]
+            m_match.away_score = dlist[3][-1:]
+            m_match.away_team = dlist[4]
+            m_match.h_fh_score = dlist[5][:1]
+            m_match.a_fh_score = dlist[5][-1:]
+            m_match.competition = dlist[6]
+            m_match.ms1 = dlist[8]
+            m_match.ms0 = dlist[9]
+            m_match.ms2 = dlist[10]
+            m_match.iy1 = dlist[14]
+            m_match.iy0 = dlist[15]
+            m_match.iy2 = dlist[16]
+            m_match.date = time2
+            if m_match.ms1 > m_match.ms0 and m_match.ms1 > m_match.ms2:
+                m_match.ms_tahmin = 'Ev Sahibi Kazanır'
+            elif m_match.ms0 > m_match.ms1 and m_match.ms0 > m_match.ms2:
+                m_match.ms_tahmin = 'Beraberlik'
+            elif m_match.ms2 > m_match.ms1 and m_match.ms2 > m_match.ms0:
+                m_match.ms_tahmin = 'Deplasman Kazanır'
+            elif m_match.ms1 == m_match.ms0:
+                m_match.ms_tahmin = "1-0 Çifte Şans"
+            elif m_match.ms1 == m_match.ms2:
+                m_match.ms_tahmin = "1-2 Çifte Şans"
+            elif m_match.ms2 == m_match.ms0:
+                m_match.ms_tahmin = "0-2 Çifte Şans"
 
-                if p.iy1 > p.iy0 and p.iy1 > p.iy2:
-                    p.iy_tahmin = 'Ev Sahibi İlk Yarıyı Kazanır'
-                elif p.iy0 > p.iy1 and p.iy0 > p.iy2:
-                    p.iy_tahmin = 'İlk Yarı Beraberlik'
-                elif p.iy2 > p.iy1 and p.iy2 > p.iy0:
-                    p.iy_tahmin = 'İlk Yarıyı Deplasman Kazanır'
-                elif p.iy1 == p.iy0:
-                    p.iy_tahmin = "İY 1-0 Çifte Şans"
-                elif p.iy1 == p.iy2:
-                    p.iy_tahmin = "İY 1-2 Çifte Şans"
-                elif p.iy2 == p.iy0:
-                    p.iy_tahmin = "İY 0-2 Çifte Şans"
-                p.save()
+            if m_match.iy1 > m_match.iy0 and m_match.iy1 > m_match.iy2:
+                m_match.iy_tahmin = 'Ev Sahibi İlk Yarıyı Kazanır'
+            elif m_match.iy0 > m_match.iy1 and m_match.iy0 > m_match.iy2:
+                m_match.iy_tahmin = 'İlk Yarı Beraberlik'
+            elif m_match.iy2 > m_match.iy1 and m_match.iy2 > m_match.iy0:
+                m_match.iy_tahmin = 'İlk Yarıyı Deplasman Kazanır'
+            elif m_match.iy1 == m_match.iy0:
+                m_match.iy_tahmin = "İY 1-0 Çifte Şans"
+            elif m_match.iy1 == m_match.iy2:
+                m_match.iy_tahmin = "İY 1-2 Çifte Şans"
+            elif m_match.iy2 == m_match.iy0:
+                m_match.iy_tahmin = "İY 0-2 Çifte Şans"
+            m_match.save()
 
     url2 = main_url + "/BOYZFutbol.aspx?L=Sadece%20İddaa%20Maçları&D=" + time
     r2 = requests.get(url2)
@@ -92,7 +91,7 @@ def home(request):
             except:
                 dlist2.append(detail2.text)
         if len(dlist2) > 1:
-            for i in Matches.objects.filter(home_team=dlist2[2], away_team=dlist2[4]):
+            for i in Matches.objects.filter(home_team=dlist2[2]):
                 i.over_05 = dlist2[19]
                 i.over_15 = dlist2[20]
                 i.over_25 = dlist2[21]
@@ -139,7 +138,6 @@ def home(request):
             print("Fazlalık Silindi!" + i.home_team + i.away_team)
         else:
             pass
-"""
     matches = Matches.objects.filter(date=datetime.strftime(datetime.now(), '%Y-%m-%d'))
     payload = {
         'matches': matches
