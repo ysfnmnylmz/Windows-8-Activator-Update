@@ -1,3 +1,4 @@
+from selenium import webdriver
 import requests
 from django.core.management.base import BaseCommand
 from time import gmtime, strftime
@@ -10,9 +11,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         headers = {'User-agent': 'Mozilla/5.0'}
+        driver = webdriver.Chrome()
         main_url = "http://tr.whoscored.com"
-        r = requests.get(main_url, headers=headers)
-        print(r.content)
-        soup = bs(r.content, "lxml")
-
+        r = driver.get(main_url)
+        print(r)
 

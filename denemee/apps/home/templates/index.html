@@ -1,173 +1,424 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block App %}
-    <div>
-        <div class="row">
-            <div style="display: flex; justify-content: center;">
-                <a href="/" style="margin: 5px; color: orange; text-decoration: none">Bugünün Maçları</a>
-                <a href="/yesterday" style="margin: 5px; color: orange; text-decoration: none">Dünün Maçları</a>
+    <section id="home-matches" class="container-fluid owl-carousel">
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
             </div>
         </div>
-    </div>
-    <form action="{% url 'result:search_result' %}" method="get">
-        <div class="col-12 search">
-            <input name="q" class="search-news-none" alt="Arama Yap.." type="search"
-                   placeholder="Takım İsmi Gir...">
-            <button class="search-border"><img src="{% static 'img/icons/search-icon.svg' %}">
-            </button>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
         </div>
-    </form>
-    <ul>
-        {% for match in matches %}
-            <li class="card" style="display: none">
-                <div class="card__flipper">
-                    <div class="card__front">
-                        <p>{{ match.date }}</p>
-                        <p class="card__name"><span>{{ match.home_team }}</span><br><span
-                                class="versus">vs</span><br><span>{{ match.away_team }}</span></p>
-                        <span style="display: flex; justify-content: center; line-height: 0.8">
-                            <p class="card__num h-score">{{ match.home_score }}</p>
-                            <p class="card__num"> - </p>
-                            <p class="card__num a-score">{{ match.away_score }}</p>
-                        </span>
-                        <span>
-                            <p class="card__num" style="font-size: 15px;">{{ match.competition }}</p>
-                        </span>
-                        <span style="position:absolute;bottom: 10px;left: 0;right: 0; ">
-                            <a href="" class="card__num"
-                               style="padding:5px;border: 1px solid white;font-size: 15px; color: white; text-decoration: none; font-weight: 400">Tahminler İçin Tıklayınız...</a>
-                        </span>
-                    </div>
-                    <div class="card__back">
-                        <div class="arka">
-                            <p>MS</p>
-                            <span>
-                            {% if match.ms_tahmin == 'Ev Sahibi Kazanır' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score > match.away_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>1</span></p>
-                            {% elif match.ms_tahmin == 'Beraberlik' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score == match.away_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>0</span></p>
-                            {% elif match.ms_tahmin == 'Deplasman Kazanır' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score < match.away_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>2</span></p>
-                            {% elif match.ms_tahmin == '1-0 Çifte Şans' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score >= match.away_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>1X Ç</span></p>
-                            {% elif match.ms_tahmin == '1-2 Çifte Şans' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score != match.away_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>12 Ç</span></p>
-                            {% else %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.home_score <= match.away_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>MS<span>02 Ç</span></p>
-
-                            {% endif %}
-                                {% if match.tahmin05 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 0 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>0.5ü <i
-                                            class="fas fa-thumbs-up"></i></p>
-                                {% endif %}
-                                {% if match.tahmin15 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 1 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>1.5ü <i
-                                            class="fas fa-thumbs-up"></i></p>
-                                {% endif %}
-                                {% if match.tahmin25 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 2 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>2.5ü <i
-                                            class="fas fa-thumbs-up"></i></p>
-                                {% endif %}
-                                {% if match.tahmin35 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 3 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>3.5ü <i
-                                            class="far fa-thumbs-up"></i></p>
-                                {% endif %}
-                                <!--{% if match.tahmin45 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score|add:match.away_score > 4 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>4.5ü <i
-                                            class="far fa-thumbs-up"></i></p>
-                                {% endif %}-->
-                                {% if match.tahmin_kg == 'KG Olur' %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score != '0' and match.away_score != '0' %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>KG <i
-                                            class="fas fa-check"></i></p>
-                                {% else %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.home_score == '0' or match.away_score == '0' %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>KG<i
-                                            class="fas fa-times"></i></p>
-                                {% endif %}
-                                </span>
-                        </div>
-                        <div class="arka">
-                            <p>İY</p>
-                            <span>
-                            {% if match.iy_tahmin == 'Ev Sahibi İlk Yarıyı Kazanır' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score > match.a_fh_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>1</span></p>
-                            {% elif match.iy_tahmin == 'İlk Yarı Beraberlik' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score == match.a_fh_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>0</span></p>
-                            {% elif match.iy_tahmin == 'İlk Yarıyı Deplasman Kazanır' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score < match.a_fh_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>2</span></p>
-                            {% elif match.iy_tahmin == 'İY 1-0 Çifte Şans' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score >= match.a_fh_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>1X Ç</span></p>
-                            {% elif match.iy_tahmin == 'İY 1-2 Çifte Şans' %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score != match.a_fh_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>12 Ç</span></p>
-                            {% else %}
-                                <p class="bet"
-                                   {% if match.home_score != 'v' %}{% if match.h_fh_score <= match.a_fh_score %}style="color:green;"
-                                   {% else %}style="color:red;"{% endif %}{% endif %}>İY<span>02 Ç</span></p>
-                            {% endif %}
-                                {% if match.iy_over_05 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 0 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>İY 0.5ü <i
-                                            class="fas fa-thumbs-up"></i></p>
-                                {% endif %}
-                                {% if match.iy_over_15 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 1 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>İY 1.5ü <i
-                                            class="fas fa-thumbs-up"></i></p>
-                                {% endif %}
-                                <!--{% if match.iy_over_25 %}
-                                    <p class="bet"
-                                       {% if match.home_score != 'v' %}{% if match.h_fh_score|add:match.a_fh_score > 2 %}style="color:green;"
-                                       {% else %}style="color: red;"{% endif %}{% endif %}>İY 2.5ü <i
-                                            class="far fa-thumbs-up"></i></p>
-                                {% endif %}-->
-                                </span>
-                        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+        <div class="match-board item">
+            <div class="match-board-title">
+                <img src="{% static 'img/icons/uefa-europa-league.png' %}" title="league logo"/>
+            </div>
+            <div class="match-board-body">
+                <div class="teams">
+                    <img src="{% static 'img/icons/juventus.png' %}" title="Home Team"/>
+                    <img src="{% static 'img/icons/barcelona.png' %}" title="Away Team"/>
+                </div>
+                <div class="match-date">
+                    <p>12:00</p>
+                    <p>23 Apr. 2019</p>
+                </div>
+            </div>
+            <div class="match-board-footer">
+                <div class="team-names">
+                    <p>Juventus</p>
+                    <p>Barcelona</p>
+                </div>
+                <div class="match-score">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </div>
+            <div class="match-detail-btn">
+                <a href="#">
+                    Detail
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="row main-side">
+            <main class="col-md-8">
+                <div class="index-base">
+                    <div class="top-matches-list">
+                        <ul>
+                            <li class="top-matches-list-item row">
+                                <div class="match-tournament col-1">
+                                    <img src="{% static 'img/icons/turkey.png' %}"/>
+                                </div>
+                                <div class="match-hours col-1">
+                                    <span>12:00</span>
+                                    <span>29 Apr.</span>
+                                </div>
+                                <div class="match-teams col-1">
+                                    <img src="{% static 'img/icons/juventus.png' %}"/>
+                                    <img src="{% static 'img/icons/barcelona.png' %}"/>
+                                </div>
+                                <div class="match-team-names col-2">
+                                        <span>Juventus</span>
+                                        <span>Barcelona</span>
+                                </div>
+                                <div class="match-stadium col-2" >
+                                    <img src="{% static 'img/icons/stadium.png' %}" />
+                                    <span class="stadium-name">Nou Camp</span>
+                                </div>
+                                <div class="match-referee col-2">
+                                    <img src="{% static 'img/icons/whistle.png' %}">
+                                    <span class="referee-name">Hakem İsmi</span>
+                                </div>
+                                <div class="weather col-1">
+                                    <img src="{% static 'img/icons/weather/storm.png' %}">
+                                </div>
+                                <div class="details col-1">
+                                    <a href="#">
+                                        <img src="{% static 'img/icons/analytics.png' %}" />
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </li>
-        {% endfor %}
-        <div class="button">
-            <a href="#" id="loadMore">Daha Fazla</a>
-        </div>
-    </ul>
 
+            </main>
+            <aside class="col-md-4">
+                <div class="side-bar">
+                    <a href="#"><img src="{% static 'img/icons/barcelona.png' %}" title="Team"/><span>6.79</span></a>
+                    <a href="#"><img src="{% static 'img/icons/barcelona.png' %}" title="Team"/><span>6.79</span></a>
+                    <a href="#"><img src="{% static 'img/icons/barcelona.png' %}" title="Team"/><span>6.79</span></a>
+                    <a href="#"><img src="{% static 'img/icons/barcelona.png' %}" title="Team"/><span>6.79</span></a>
+                    <a href="#"><img src="{% static 'img/icons/barcelona.png' %}" title="Team"/><span>6.79</span></a>
+                    <a href="#"><img src="{% static 'img/icons/barcelona.png' %}" title="Team"/><span>6.79</span></a>
+                </div>
+            </aside>
+        </div>
+    </section>
 {% endblock %}
 {% block scripts %}
 {% endblock %}

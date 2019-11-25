@@ -1,11 +1,18 @@
 from django.contrib import admin
-from .models import Teams, Players, Squads
+from .models import Teams, Players, Squads, Leagues, TeamCharacteristic, TeamPowerUp, PlayerPowerUp
 
 
 class TeamsInlinePlayers(admin.StackedInline):
     model = Players
     fields = ['name']
     classes = ['collapse']
+
+
+class LeaguesAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+    class Meta:
+        model = Leagues
 
 
 class TeamsInlineSquad(admin.StackedInline):
@@ -50,3 +57,7 @@ class SquadsAdmin(admin.ModelAdmin):
 admin.site.register(Teams, TeamsAdmin)
 admin.site.register(Players, PlayersAdmin)
 admin.site.register(Squads, SquadsAdmin)
+admin.site.register(Leagues, LeaguesAdmin)
+admin.site.register(TeamPowerUp)
+admin.site.register(TeamCharacteristic)
+admin.site.register(PlayerPowerUp)

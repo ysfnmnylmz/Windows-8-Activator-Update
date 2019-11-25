@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'denemee.apps.home',
     'denemee.apps.result',
+    'denemee.apps.matches',
 
     'ckeditor',
     'ckeditor_uploader',

@@ -1,0 +1,249 @@
+#home-matches {
+  font-family: 'Poppins', sans-serif;
+  margin: 5px 0;
+  display: flex;
+
+  .match-board {
+    margin: 5px;
+    padding: 5px 10px 10px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px lighten(#333, 50%);
+
+    .match-board-title {
+      display: flex;
+      justify-content: center;
+      padding: 5px 0;
+
+      img {
+        width: 20px;
+      }
+    }
+
+    .match-board-body {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+
+      .teams {
+        display: inline-flex;
+        min-width: 65px;
+
+        img {
+          width: 30px;
+          height: 30px;
+          padding: 5px;
+          border: 1px solid grey;
+          border-radius: 50%;
+
+          &:last-child {
+            margin-left: -5px;
+            background-color: white;
+          }
+        }
+      }
+
+      .match-date {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+
+        p {
+          font-weight: 400;
+          font-size: 12px;
+
+          &:first-child {
+            font-weight: 700;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .match-board-footer {
+      display: flex;
+      justify-content: center;
+
+      .match-score {
+        p {
+          &::before {
+            content: ":";
+            margin-right: 5px;
+          }
+        }
+      }
+
+      .team-names,
+      .match-score {
+        margin: 5px;
+
+        p {
+          font-weight: 400;
+
+          &:first-child {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .match-detail-btn {
+      text-align: center;
+
+      a {
+        display: block;
+        background-color: green;
+        text-decoration: none;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+
+        &:hover {
+          background-color: lighten(green, 10%);
+          text-shadow: 0 0 5px #333;
+        }
+      }
+    }
+  }
+}
+
+.main-side {
+  .index-base,
+  .side-bar {
+    box-shadow: 0 0 5px 1px lighten(#333, 50%);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .index-base {
+    .top-matches-list {
+      ul {
+        .top-matches-list-item {
+          .match-tournament {
+            transform: rotate(270deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+              width: 36px;
+              height: 36px;
+            }
+          }
+
+          .match-hours {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: right;
+
+            span {
+              font-size: 12px;
+
+              &:first-child {
+                font-size: 14px;
+                font-weight: 700;
+              }
+            }
+          }
+
+          .match-teams {
+            display: inline-flex;
+            min-width: 65px;
+            align-items: center;
+
+            img {
+              width: 30px;
+              height: 30px;
+              padding: 5px;
+              border: 1px solid grey;
+              border-radius: 50%;
+
+              &:last-child {
+                margin-left: -5px;
+                background-color: white;
+              }
+            }
+          }
+
+          .match-team-names {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            span {
+              &:first-child {
+                font-weight: 700;
+              }
+            }
+          }
+
+          .match-stadium,
+          .match-referee {
+            display: flex;
+            align-items: center;
+
+            img {
+              width: 30px;
+              height: 30px;
+            }
+
+            span {
+              margin-left: 5px;
+              font-size: 14px;
+            }
+          }
+
+          .weather {
+            display: flex;
+            justify-content: center;
+
+            img {
+              width: 50px;
+            }
+          }
+
+          .details {
+            display: flex;
+
+            a {
+              img {
+                width: 50px;
+                height: 50px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .side-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+      flex: 1 0 25%;
+      margin: 5px;
+      height: auto;
+      max-width: 75px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: all .5s ease;
+
+      span {
+        color: orangered;
+        font-weight: 600;
+        margin: auto;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      img {
+      }
+    }
+  }
+}

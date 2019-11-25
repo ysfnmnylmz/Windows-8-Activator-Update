@@ -8,6 +8,7 @@ from denemee.apps.home.models import Teams
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
+        m = 0
         teams = []
         url = "https://fbref.com/en/comps/26/Super-Lig-Stats"
         main_url = "https://fbref.com"
@@ -59,8 +60,8 @@ class Command(BaseCommand):
                         #    print(at_squad.a.text)
                         # else:
                         #    pass
-                        print("*" * 50)
-                print("#" * 100)
+                m += 1
+                print(m)
 
         print(teams)
         Teams.objects.all().delete()
