@@ -4,7 +4,7 @@
 /.myvenv
 /media/cache
 /myvenv
-/static/libs
+/static
 /static_files/libs
 /node_modules
 /venv
