@@ -22,7 +22,8 @@ class TeamsInlineSquad(admin.StackedInline):
 
 
 class TeamsAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name', 'league']
+    list_filter = ['league']
     inlines = [TeamsInlineSquad, TeamsInlinePlayers]
 
     class Meta:

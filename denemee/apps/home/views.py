@@ -2,14 +2,18 @@ from django.shortcuts import render, get_object_or_404
 import requests
 from bs4 import BeautifulSoup as bs
 from django.db.models import Q
-from denemee.apps.result.models import Matches
+from denemee.apps.matches.models import Matches
+from denemee.apps.home.models import Leagues
 from time import strftime, gmtime
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 
 def home(request):
-    matches = Matches.objects.all()
+    today = strftime("%Y-%m-%d", gmtime())
+    matches = Matches.objects.filter(date=today)
+    leagues = Leagues.objects.all()
     payload = {
-        'matches': matches
+        'matches': matches,
+        'leagues': leagues
     }
     return render(request, 'index.html', payload)

@@ -3,6 +3,7 @@ from django.db import models
 
 class Leagues(models.Model):
     name = models.CharField(max_length=255, verbose_name='Lig İsmi')
+    icon = models.ImageField(verbose_name='Lig İkonu', upload_to='media/leagues/icon', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Lig'
@@ -16,12 +17,16 @@ class Teams(models.Model):
     name = models.CharField(max_length=255, verbose_name='Takım ismi')
     league = models.ForeignKey('Leagues', default='', verbose_name='Lig', on_delete=models.CASCADE, null=True,
                                blank=True)
+    emblem = models.CharField(max_length=255, verbose_name="Takım Logo", default=None, blank=True, null=True)
     goal_pg = models.CharField(max_length=100, verbose_name='Gol (Maç Başına)', default=None, null=True, blank=True)
-    avg_possesion = models.CharField(max_length=100, verbose_name='Topa Sahip Olma', default=None, null=True, blank=True)
+    avg_possesion = models.CharField(max_length=100, verbose_name='Topa Sahip Olma', default=None, null=True,
+                                     blank=True)
     pass_accuracy = models.CharField(max_length=100, verbose_name='Pas Yüzdesi', default=None, null=True, blank=True)
     shoots_pg = models.CharField(max_length=100, verbose_name='Şut (Maç Başına)', default=None, null=True, blank=True)
-    tackles_pg = models.CharField(max_length=100, verbose_name='Top çalma (Maç Başına)', default=None, null=True, blank=True)
-    dribbles_pg = models.CharField(max_length=100, verbose_name='Adam geçme (Maç Başına)', default=None, null=True, blank=True)
+    tackles_pg = models.CharField(max_length=100, verbose_name='Top çalma (Maç Başına)', default=None, null=True,
+                                  blank=True)
+    dribbles_pg = models.CharField(max_length=100, verbose_name='Adam geçme (Maç Başına)', default=None, null=True,
+                                   blank=True)
     yellow_card = models.CharField(max_length=100, verbose_name='Sarı Kart', default=None, null=True, blank=True)
     red_card = models.CharField(max_length=100, verbose_name='Kırmızı Kart', default=None, null=True, blank=True)
 
@@ -57,9 +62,9 @@ class Players(models.Model):
     aerial_won = models.CharField(max_length=255, verbose_name='Hava Topu', default=None, blank=True,
                                   null=True)
     man_o_match = models.CharField(max_length=255, verbose_name='Maçın Adamı', default=None, blank=True,
-                                  null=True)
+                                   null=True)
     player_rating = models.CharField(max_length=255, verbose_name='Puanı', default=None, blank=True,
-                                  null=True)
+                                     null=True)
 
     class Meta:
         verbose_name_plural = "Oyuncular"

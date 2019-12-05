@@ -14,8 +14,11 @@ class Matches(models.Model):
                                on_delete=models.CASCADE)
     a_team_logo = models.CharField(max_length=255, verbose_name='Deplasman Takım Logo Konumu', blank=True, null=True,
                                    default='')
-    result = models.CharField(max_length=255, verbose_name='Sonuç', blank=True, null=True, default='')
+    result_home = models.CharField(max_length=255, verbose_name='Ev Sahibi skor', blank=True, null=True, default='')
+    result_away = models.CharField(max_length=255, verbose_name='Deplasman skor', blank=True, null=True, default='')
     status = models.CharField(max_length=255, verbose_name='Durum', blank=True, null=True, default='')
+    result = models.CharField(max_length=255, blank=True, null=True)
+    match_league = models.CharField(max_length=255, blank=True, null=True, default='')
 
     class Meta:
         verbose_name = 'Maç'
