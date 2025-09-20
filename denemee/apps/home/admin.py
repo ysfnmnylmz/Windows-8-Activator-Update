@@ -55,10 +55,18 @@ class SquadsAdmin(admin.ModelAdmin):
         model = Squads
 
 
+class TeamCharacteristicAdmin(admin.ModelAdmin):
+    list_display = ['team']
+    search_fields = ['team']
+
+    class Meta:
+        model = TeamCharacteristic
+
+
 admin.site.register(Teams, TeamsAdmin)
 admin.site.register(Players, PlayersAdmin)
 admin.site.register(Squads, SquadsAdmin)
 admin.site.register(Leagues, LeaguesAdmin)
 admin.site.register(TeamPowerUp)
-admin.site.register(TeamCharacteristic)
+admin.site.register(TeamCharacteristic, TeamCharacteristicAdmin)
 admin.site.register(PlayerPowerUp)

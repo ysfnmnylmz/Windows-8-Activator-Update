@@ -24,5 +24,6 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('', include('denemee.apps.home.urls', namespace='home')),
     url('yesterday', include('denemee.apps.result.urls', namespace='yesterday')),
+    url('matches/', include('denemee.apps.matches.urls', namespace='matches')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

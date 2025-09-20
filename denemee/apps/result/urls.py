@@ -6,5 +6,5 @@ app_name = 'result'
 
 urlpatterns = [
     path('', yesterday, name='yesterday'),
-path('search/', SearchMatch.as_view(), name='search_result'),
+    path('search/', SearchMatch.as_view(), name='search_result'),
 ]
