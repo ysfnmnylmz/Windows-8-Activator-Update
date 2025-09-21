@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load verbose_name %}
+{% load mathfilters %}
+{% load replace %}
+{% block App %}
+    <!-- Home Team Characteristic
+    {% for instance in home_team_chr_data %}
+        {% for field, value in instance.fields.items %}
+            {% if value is True %}
+                {% get_verbose_field_name home_team_chr field %}: {{ value }}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}-->
+    <!-- Away Team Characteristic
+    {% for instance in away_team_chr_data %}
+        {% for field, value in instance.fields.items %}
+            {% if value is True %}
+                {% get_verbose_field_name away_team_chr field %}: {{ value }}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}-->
+    <div id='myChart' style="width: 300px; height: 300px"></div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        var myConfig = {
+            type: 'radar',
+            plot: {
+                aspect: 'area',
+                animation: {
+                    effect: 3,
+                    sequence: 1,
+                    speed: 700
+                }
+            },
+            scaleV: {
+                visible: false
+            },
+            scaleK: {
+                values: '0:5:1',
+                labels: ['Dogs', 'Cats', 'Fish', 'Birds', 'Reptiles', 'Horses'],
+                item: {
+                    fontColor: '#607D8B',
+                    backgroundColor: "white",
+                    borderColor: "#aeaeae",
+                    borderWidth: 0,
+                    padding: '5',
+                    borderRadius: 10
+                },
+                refLine: {
+                    lineColor: '#c10000'
+                },
+                tick: {
+                    lineColor: '#59869c',
+                    lineWidth: 1,
+                    lineStyle: 'solid',
+                    size: 5
+                },
+                guide: {
+                    lineColor: "#607D8B",
+                    lineStyle: 'solid',
+                    alpha: 0.3,
+                    backgroundColor: "#c5c5c5 #718eb4"
+                }
+            },
+            series: [
+                {
+                    values: [59, 39, 38, 19, 21, 35],
+                    text: 'farm'
+                },
+                {
+                    values: [20, 20, 54, 41, 41, 35],
+                    lineColor: '#53a534',
+                    backgroundColor: '#689F38'
+                }
+            ]
+        };
+
+        zingchart.render({
+            id: 'myChart',
+            data: myConfig,
+            height: '100%',
+            width: '100%'
+        });
+    </script>
+{% endblock %}
